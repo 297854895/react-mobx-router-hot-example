@@ -39,8 +39,13 @@ module.exports = {
                 }
             },
             {
-                test: /\.scss$/,
-                loader: "style-loader!css-loader!postcss-loader!resolve-url-loader!sass-loader?sourceMap"
+              test: /\.less$/,
+              use: [
+                'style-loader',
+                { loader: 'css-loader', options: { importLoaders: 2 , modules: true, localIdentName: '[path]___[name]__[local]___[hash:base64:5]'} },
+                { loader: 'autoprefixer-loader', options: { browsers: 'last 2 version'} },
+                'less-loader'
+              ]
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,

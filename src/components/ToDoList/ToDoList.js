@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { inject, observer } from 'mobx-react';
+import styles from './ToDoList.less';
 
+import { inject, observer } from 'mobx-react';
 @inject("store") @observer
 export default class ToDoList extends Component {
   constructor(props) {
@@ -19,12 +20,11 @@ export default class ToDoList extends Component {
     if (evt.which !== 13) return;
   }
   componentDidMount() {
-    console.log(this);
   }
   render() {
     return (
       <div>
-        <input ref="input" onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
+        <input ref="input" className={styles.Input} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
       </div>
     );
   }
