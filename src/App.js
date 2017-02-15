@@ -13,7 +13,9 @@ export default class App extends Component {
     super(props);
     this.store = state
   }
-
+  componentDidMount() {
+    console.log(state);
+  }
   render() {
     return (
       <Provider store={this.store}>

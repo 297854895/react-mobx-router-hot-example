@@ -18,13 +18,55 @@ export default class ToDoList extends Component {
   }
   handleKeyDown = (evt) => {
     if (evt.which !== 13) return;
+    this.store.addToDos(this.state.value);
+    this.refs.input.value = '';
+    this.setState({
+      value: ''
+    })
   }
-  componentDidMount() {
+  handleTodos = (idx) => {
+    this.store.toggleToDos(idx);
+  }
+  deleteTodos = (idx) => {
+    this.store.deleteTodos(idx);
+  }
+  filter = (filter) => {
+    this.store.toggleFilter(filter);
   }
   render() {
+    let handleSpan = [];
+    ['All', 'Undone', 'Done'].forEach((item, idx) => {
+      handleSpan.push(<span key={'TodoListfilter' + idx} onClick={this.filter.bind(this, item)} className={this.store.filter === item ? styles.spanActive : ''}>{item}</span>)
+    });
+    const curFilter = this.store.filter;
+    const output = [];
+    console.log(this.store);
+    this.store.todos.forEach((item, idx) => {
+      if (curFilter === 'Done' && !item.status) {
+        return;
+      }
+      if (curFilter === 'Undone' && item.status) {
+        return;
+      }
+      output.push(<li key={"todos"+idx} className={item.status ? styles.done : ''}>
+        {item.text}
+        <button onClick={this.deleteTodos.bind(this, idx)} className={styles.button}>Delete</button>
+        <button onClick={this.handleTodos.bind(this, idx)} className={styles.button}>{item.status ? 'Enable' : 'Done'}</button>
+      </li>);
+    });
+    if (this.store.todos.length === 0) {
+      handleSpan = [];
+    }
     return (
       <div>
-        <input ref="input" className={styles.Input} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
+        <h1 className={styles.title}>TodoList</h1>
+        <input ref="input" placeholder="add todos" className={styles.input} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
+        <div className={styles.handle}>
+          {handleSpan}
+        </div>
+        <ul className={styles.wrap}>
+          {output}
+        </ul>
       </div>
     );
   }
