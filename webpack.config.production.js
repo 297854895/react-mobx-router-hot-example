@@ -30,8 +30,15 @@ module.exports = {
                 "plugins": ['transform-async-to-generator', 'transform-decorators-legacy']
             }
         }, {
-            test: /\.scss$/i,
-            loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', 'resolve-url-loader', 'sass-loader?sourceMap']),
+          test: /\.less$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              { loader: 'css-loader', options: { importLoaders: 2 , modules: true, sourceMap: true, localIdentName: '[path]___[name]__[local]___[hash:base64:5]'} },
+              { loader: 'autoprefixer-loader', options: { browsers: 'last 2 version'} },
+              { loader: 'less-loader', options: { sourceMap: true} }
+            ]
+          })
         }, {
             test: /\.(jpe?g|png|gif|svg)$/i,
             loaders: [
