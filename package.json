@@ -1,10 +1,12 @@
 {
-  "name": "react-mobx-example",
+  "name": "react-mobx-router-hot-example",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
+    "prod": "pm2 delete www & pm2 start ./prod/bin/www",
+    "stop_prod": "pm2 delete www",
     "build": "rimraf ./dist && webpack --config webpack.config.production.js",
     "preview": "http-server ./dist -p 1234 -c-1",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,19 +21,30 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.23.0",
     "css-loader": "^0.25.0",
+    "ejs": "^2.5.5",
     "file-loader": "^0.10.0",
+    "highlight.js": "^9.8.0",
     "html-webpack-plugin": "^2.28.0",
     "image-webpack-loader": "^3.2.0",
+    "immutable": "3.8.1",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
-    "mobx": "^3.1.0",
-    "mobx-react": "^4.1.0",
     "precss": "^1.4.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-redux": "4.4.5",
     "react-router": "^3.0.2",
+    "redux": "3.5.2",
+    "redux-async-connect": "1.0.0-rc4",
+    "redux-devtools": "^3.3.2",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.2.0",
+    "redux-form": "5.2.5",
+    "redux-thunk": "2.1.0",
     "resolve-url-loader": "^1.6.1",
+    "scroll-behavior": "^0.3.2",
     "style-loader": "^0.13.1",
+    "transfer-webpack-plugin": "^0.1.4",
     "webpack": "^2.2.1",
     "whatwg-fetch": "^2.0.2"
   },
@@ -45,17 +58,23 @@
     "react-hot-loader": "^3.0.0-beta.2",
     "webpack-dev-server": "^2.3.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.5.4",
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.0"
   },
   "author": "zkc",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/297854895/react-mobx-example.git"
+    "url": "git+https://github.com/297854895/react-mobx-router-hot-example.git"
   },
   "bugs": {
-    "url": "https://github.com/297854895/react-mobx-example/issues"
+    "url": "https://github.com/297854895/react-mobx-router-hot-example/issues"
   },
-  "homepage": "https://github.com/297854895/react-mobx-example#readme",
+  "homepage": "https://github.com/297854895/react-mobx-router-hot-example#readme",
   "description": ""
 }

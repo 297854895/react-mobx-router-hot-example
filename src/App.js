@@ -1,3 +1,4 @@
+import mainCss from '../static/css/main.css';
 import React, {Component} from 'react';
 import { Router, browserHistory, IndexRoute, Route } from 'react-router';
 import { Provider, observer } from 'mobx-react';
@@ -12,9 +13,6 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.store = state
-  }
-  componentDidMount() {
-    console.log(state);
   }
   render() {
     return (

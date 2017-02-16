@@ -1,4 +1,4 @@
-# react-mobx-router-hot-example
+# react-redux-router-hot-example
 
 > A React project
 
@@ -13,3 +13,9 @@ npm run dev
 
 # build for production with minification
 npm run build
+
+# run production server with pm2 at localhost:3001
+npm run prod
+
+# stop production server
+npm run stop_prod

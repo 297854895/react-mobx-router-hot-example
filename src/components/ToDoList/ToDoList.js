@@ -40,7 +40,6 @@ export default class ToDoList extends Component {
     });
     const curFilter = this.store.filter;
     const output = [];
-    console.log(this.store);
     this.store.todos.forEach((item, idx) => {
       if (curFilter === 'Done' && !item.status) {
         return;
